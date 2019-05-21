@@ -1,26 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Get It Done!</h1>
+    <h1>Build A Blog</h1>
     <form method='post'>
         <label>
-            New Task:
-            <input type="text" name='task' />
+            New Entry:
+            <input type="text" name='entry' />
         </label>
-        <input type="submit" value='Add Task' />
+        <input type="submit" value='Add Entry' />
     </form>
 
     <hr />
 
-    {% if tasks|length == 0 %}
-    <p>No tasks yet</p>
+    {% if entries|length == 0 %}
+    <p>No entries yet</p>
     {% else %}
 
         <ul>
-            {% for task in tasks %}
-            <li>{{task.name}}
-                <form method="POST" action="/delete-task" style="display:inline-block;">
-                    <input type="hidden" name="task-id" value="{{task.id}}" />
+            {% for entry in entries %}
+            <li>{{entry.name}}
+                <form method="POST" action="/delete-entry" style="display:inline-block;">
+                    <input type="hidden" name="entry-id" value="{{entry.id}}" />
                     <input type="submit" value="Done!" />
                 </form>
             </li>
@@ -34,8 +34,8 @@
     <h2>Completed</h2>
 
     <ul>
-        {% for task in completed_tasks %}
-        <li>{{task.name}}</li>
+        {% for entry in completed_entry %}
+        <li>{{entry.name}}</li>
         {% endfor %}
     </ul>
 
