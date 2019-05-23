@@ -1,28 +1,27 @@
-{% extends "base.html" %}
-
-{% block content %}
-    <h1>Add a New Blog Entry</h1>
-    
-    <form action="/new_entry" method='post'>
-        <label>
-            New Entry Title:
-            <input type="text" name='entry' />
-        </label>
-        <input type="submit" value='Add Entry' />
-
-        <label>
-            New Entry:
-            <input type="text" name='entry' />
-        </label>
-        <input type="submit" value='Add Entry' />
+{% extends "base.html" %} {% block content %}
+<h1>What's New?</h1>
 
 
-    </form>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+
+<form action="/newpost" method="post">
+  <label for="new_entry_title">Title for your new blog:</label>
+  <input name="title" type="text" value="{{ new_entry_title }}" />
+
+  <label for="new_entry_body">Your new blog:</label>
+  <textarea rows="10" cols="50" id="new_entry_body" name="body">{{
+    new_entry_body }}</textarea>
+
+  <input id="submit_button" type="submit" value="Save" />
+</form>
 
 {% endblock %}
-
-
-
-
-
-

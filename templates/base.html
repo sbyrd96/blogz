@@ -1,12 +1,20 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>{{title}}</title>
-    </head>
-<body>
+  <head>
+    <title>{{ title }}</title>
+  </head>
 
-    {% block content %}
-    {% endblock %}
+  <body>
+    <div style="float:left">
+      <form action="/blog" id="blog">
+        <input type="submit" value="Main Blog Page" />
+      </form>
 
-</body>
+      <form action="/newpost"  id="newpost">
+        <input type="submit" value="Add a Blog Entry" />
+      </form>
+    </div>
+
+    {% block content %} {% endblock %}
+  </body>
 </html>

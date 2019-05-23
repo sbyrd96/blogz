@@ -2,41 +2,18 @@
 
 {% block content %}
     <h1>Build A Blog</h1>
-    <form method='post'>
-        <label>
-            New Entry:
-            <input type="text" name='entry' />
-        </label>
-        <input type="submit" value='Add Entry' />
-    </form>
 
-    <hr />
+    <ul>
+        {% for entry in entries %}
+            <li>
+                <h2>
+                    <a href="/blog?id={{ entry.id }}">{{ entry.title }}</a>
+                </h2>
+                
+                <p>{{ entry.body }}</p>
 
-    {% if entries|length == 0 %}
-    <p>No entries yet</p>
-    {% else %}
-
-        <ul>
-            {% for entry in entries %}
-            <li>{{entry.name}}
-                <form method="POST" action="/delete-entry" style="display:inline-block;">
-                    <input type="hidden" name="entry-id" value="{{entry.id}}" />
-                    <input type="submit" value="Done!" />
-                </form>
             </li>
             {% endfor %}
         </ul>
-
-    {% endif %}
-
-    <hr />
-
-    <h2>Completed</h2>
-
-    <ul>
-        {% for entry in completed_entry %}
-        <li>{{entry.name}}</li>
-        {% endfor %}
-    </ul>
 
 {% endblock %}
