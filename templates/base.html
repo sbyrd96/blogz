@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
+
+      <nav>
+          <ul id="user-account">
+
+              <li><a href="/login">login</a></li>
+              <li><a href="/logout">logout</a></li>
+          </ul>
+          <ul>
+
+              <li><a href="/">home</a></li>
+              <li><a href="/blog">all posts</a></li>
+              <li><a href="/blog/newpost">new post</a></li>
+          </ul>
+  
+      </nav>
+
     <title>{{ title }}</title>
-  </head>
-
-  <body>
-    <div style="float:left">
-      <form action="/blog" id="blog">
-        <input type="submit" value="Main Blog Page" />
-      </form>
-
-      <form action="/newpost"  id="newpost">
-        <input type="submit" value="Add a Blog Entry" />
-      </form>
-    </div>
+    <link rel="stylesheet" href="/static/normalize.css">
+    <link rel="stylesheet" href="/static/styles.css">
 
     {% block content %} {% endblock %}
   </body>
