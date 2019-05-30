@@ -1,19 +1,22 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block content %}
+<h1>Blog Posts!</h1>
 
-{% block content %}
-    <h1>Build A Blog</h1>
+<ul>
+  {% for blog in blogs %}
+  <li>
+    <h2>
+      <a href="/blog?id={{ blog.id }}">{{ blog.title }}</a>
+    </h2>
 
-    <ul>
-        {% for entry in entries %}
-            <li>
-                <h2>
-                    <a href="/blog?id={{ entry.id }}">{{ entry.title }}</a>
-                </h2>
-                
-                <p>{{ entry.body }}</p>
+    <p>{{ blog.body }}</p>
 
-            </li>
-            {% endfor %}
-        </ul>
+    <h6>
+      Written by:
+      <a href="/blog?user={{ blog.owner_id }}">{{ blog.owner.username }}</a>
+    </h6>
+  </li>
+
+  {% endfor %}
+</ul>
 
 {% endblock %}

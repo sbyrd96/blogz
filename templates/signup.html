@@ -1,36 +1,36 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2>Register New Account</h2>
-<form action="/register" method="post">
+<h2>User Signup</h2>
 
-  <p><label>Username <input type="text" name="userid" /></label></p>
-  {% if idusederror %}
-  {{error}}
-  {% endif %}
+<form action="/signup" method="post">
 
-  <p><label>New Password <input type="password" name="password" required/></label></p>
-  {% if matcherror %}
-  {{error}}
-  {% endif %}
+    <p><label>Username <input type="text" name="username" value="{{username}}"/></label>
+    <span class="error"> {% if error_present %}
+    {{idusederror}}  
+    {{name_error}}
+    {{name_len_error}}
+    {{name_blank_error}}
+    {% endif %}
+    </span></p>  
 
-  <p><label>Verify Password <input type="password" name="verify"required/></label></p>
-  {% if matcherror %}
-  {{error}}
-  {% endif %}
+    <p><label>New Password <input type="password" name="password" /></label>
+    <span class="error"> {% if error_present %}
+    {{password_error}}
+    {{pass_len_error}}
+    {{pass_blank_error}}
+    {% endif %}
+    </span></p>
+    
+    <p><label>Verify Password <input type="password" name="verify"/></label>
+    <span class="error"> {% if error_present %}
+    {{password_error}}  
+    {{match_error}}
+    {% endif %}
+    </span></p>
+   
+    <p><input type="submit" value="Register"/></p>
 
-  <p><label>Email (optional) <input type="text" name="email"/></label></p>
-  {% if mailerror %}
-  {{error}}
-  {% endif %}
-
-  {% if usederror %}
-  {{error}}
-  {% endif %}
-
-
-
-  <p><input type="submit" value="Register"/></p>
-</form>
+  </form>
 
 {% endblock %}

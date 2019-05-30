@@ -5,6 +5,16 @@
     <form method="post">
         <table>
             <tr>
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                      <ul class=flashes>
+                      {% for message in messages %}
+                        <li>{{ message }}</li>
+                      {% endfor %}
+                      </ul>
+                    {% endif %}
+                  {% endwith %}
+
                 <td><label for="username">Username</label></td>
                 <td>
                     <input name="username" type="text" value="">
@@ -17,7 +27,7 @@
                 </td>
             </tr>
         </table>
-        <input type="submit">
+        <input type="submit" value="Login">
     </form>
     <p>Don't have an account? <a href="/signup">Create one!</a></p>
 

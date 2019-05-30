@@ -1,27 +1,26 @@
 {% extends "base.html" %} {% block content %}
 <h1>What's New?</h1>
 
-
-{% with messages = get_flashed_messages() %}
-  {% if messages %}
-    <ul class=flashes>
-    {% for message in messages %}
-      <li>{{ message }}</li>
-    {% endfor %}
-    </ul>
-  {% endif %}
-{% endwith %}
-
+{% with messages = get_flashed_messages() %} {% if messages %}
+<ul class="flashes">
+  {% for message in messages %}
+  <li>{{ message }}</li>
+  {% endfor %}
+</ul>
+{% endif %} {% endwith %}
 
 <form action="/newpost" method="post">
-  <label for="new_entry_title">Title for your new blog:</label>
-  <input name="title" type="text" value="{{ new_entry_title }}" />
 
-  <label for="new_entry_body">Your new blog:</label>
-  <textarea rows="10" cols="50" id="new_entry_body" name="body">{{
-    new_entry_body }}</textarea>
+  <label for="title">Title for your new blog:</label>
+  <input name="title" type="text" value="{{ title }}" />
+  <p></p>
 
-  <input id="submit_button" type="submit" value="Save" />
+  <label for="body">Your new blog:</label>
+  <p></p>
+  <textarea rows="10" cols="50" input name="body" value="{{ body }}"></textarea>
+
+  <p></p>
+  <input type="submit" value="Save" />
 </form>
 
 {% endblock %}
