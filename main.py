@@ -215,7 +215,7 @@ def newpost():
 
         if not text_present(blog_title) and not text_present(blog_body):
             flash("Both a title and a blog entry are required. Please fill both in.")
-            return redirect('/newpost', blog_title=blog_title, blog_body=blog_body)
+            return render_template('newpost.html', blog_title=blog_title, blog_body=blog_body)
 
         else:
             db.session.add(new_blog)
